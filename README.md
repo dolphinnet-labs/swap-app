@@ -1,4 +1,4 @@
-# cp_swap
+# RootHash Chain swap V1
 
 ## Project setup
 ```
