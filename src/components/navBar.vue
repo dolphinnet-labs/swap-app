@@ -614,6 +614,26 @@ const handleSelect = (index, indexPath) => {
   }
 }
 
+/* 移除语言下拉框的边框 */
+:deep(.el-popper) {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+:deep(.el-popper .el-menu--popup) {
+  border: none !important;
+}
+
+/* 语言下拉菜单项悬停颜色改为蓝色 */
+:deep(.el-menu--popup .el-menu-item:hover) {
+  color: #0066cc !important;
+  background-color: rgba(0, 102, 204, 0.1) !important;
+}
+
+:deep(.el-menu--popup .el-menu-item.is-active) {
+  color: #0066cc !important;
+}
+
 .no-arrow {
   :deep(.el-sub-menu__title) {
     padding-left: 0;

@@ -24,6 +24,16 @@
   background-color: transparent !important;
 }
 
+/* 语言下拉菜单项悬停颜色改为蓝色 */
+.el-menu--popup .el-menu-item:hover {
+  color: #0066cc !important;
+  background-color: rgba(0, 102, 204, 0.1) !important;
+}
+
+.el-menu--popup .el-menu-item.is-active {
+  color: #0066cc !important;
+}
+
 
 .el-sub-menu__title:hover {
   background-color: transparent !important;
@@ -53,11 +63,24 @@
   border-radius: 16px;
   overflow     : hidden;
   padding      : 10px;
+  border       : none;
+  box-shadow   : 0 4px 12px rgba(0, 0, 0, 0.1);
   //  height: 600px;
 }
 
 .el-popper.is-light {
   background: transparent;
+  border    : none;
+}
+
+/* 移除语言下拉框的边框 */
+:deep(.el-popper) {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:deep(.el-popper .el-menu--popup) {
+  border: none !important;
 }
 
 .el-menu {
