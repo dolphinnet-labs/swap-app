@@ -133,7 +133,7 @@ function confirm() {
   align-items: center;
   justify-content: center;
   .modal-box {
-    background: #151517;
+    background: var(--el-menu-bg-color);
     border-radius: 16px;
     min-width: 260px;
     min-height: 130px;
@@ -146,7 +146,7 @@ function confirm() {
       justify-content: space-between;
       align-items: center;
       font-size: 15px;
-      color: #fff;
+      color: var(--text-color);
       margin-bottom: 18px;
       .close-btn {
         font-size: 20px;
@@ -159,7 +159,7 @@ function confirm() {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
-      background: #101012;
+      background: var(--el-bg-color);
       border-radius: 8px;
       padding: 0 10px;
       border: 1px solid #222;
@@ -167,7 +167,7 @@ function confirm() {
         flex: 1;
         background: transparent;
         border: none;
-        color: #fff;
+        color: var(--text-color);
         font-size: 18px;
         outline: none;
         padding: 12px 0;
@@ -191,14 +191,14 @@ function confirm() {
       border-radius: 999px;
       border: none;
       height: 38px;
-      background: #14e18d;
-      color: #111;
+      background: var(--el-menu-active-color);
+      color: var(--el-menu-bg-color);
       font-weight: bold;
       font-size: 16px;
       margin-top: 2px;
       cursor: pointer;
       transition: background 0.2s;
-      &:hover { background: #00ce7a; }
+      &:hover { background: var(--el-menu-active-color); }
     }
   }
 }

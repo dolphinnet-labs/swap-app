@@ -567,38 +567,96 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 #container {
-  background: #121212 url("../../assets/faucet_bg.png") no-repeat;
+  background: var(--bg-color) url("../../assets/faucet_bg.png") no-repeat;
   background-size: 100% 100%;
+  background-position: center;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  animation: backgroundFloat 30s ease-in-out infinite;
+  
+  // 渐变背景动画层
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 206, 122, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(0, 102, 204, 0.05) 0%, transparent 40%);
+    animation: gradientMove 25s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
 
   // padding-top: 100px;
   .contents {
     // background: red;
     padding-top: 80px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     // height: 100vh;
     // width: h;
 
   }
+  
+  @keyframes gradientMove {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    33% {
+      transform: translate(3%, 3%) scale(1.05);
+      opacity: 0.9;
+    }
+    66% {
+      transform: translate(-3%, -3%) scale(0.95);
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes backgroundFloat {
+    0%, 100% {
+      background-position: center center;
+    }
+    25% {
+      background-position: 51% 51%;
+    }
+    50% {
+      background-position: 49% 49%;
+    }
+    75% {
+      background-position: 50.5% 50.5%;
+    }
+  }
 
   h1 {
-    color: #FFF;
+    color: var(--text-color);
     text-align: center;
-
+    font-family: 'TT_Hoves_Pro', 'PingFang', sans-serif;
     font-size: 40px;
     font-style: normal;
     font-weight: 600;
-    line-height: normal;
+    line-height: 1.2;
     width: 100%;
-
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 32px;
+    margin-top: 0;
+    letter-spacing: 0.5px;
   }
 }
 
@@ -622,7 +680,7 @@ input[type="number"] {
 
 .swap-wrap {
   min-height: 100vh;
-  background: #D9D9D9;
+  background: var(--el-bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -631,19 +689,21 @@ input[type="number"] {
 .swap-card {
   max-width: 448px;
   border-radius: 24px;
-  background: var(---, #1E1E1E);
-  border: 1.5px solid #222326;
-  padding: 16px;
+  background: var(--el-menu-bg-color);
+  border: 1.5px solid var(--el-border-color-light);
+  padding: 24px;
   position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
 
   .swap-row {
     border-radius: 20px;
-    border: 1px solid #2E2F32;
+    border: 1px solid var(--el-border-color-light);
     margin-bottom: 16px;
-    padding: 16px;
+    padding: 20px;
+    background: var(--el-bg-color);
 
     .swap-label {
-      color: #FFF;
+      color: var(--text-color);
       font-size: 14px;
       margin-bottom: 10px;
       text-align: left;
@@ -657,49 +717,72 @@ input[type="number"] {
       .swap-amount-input {
         background: transparent;
         border: none;
-        color: #fff;
+        color: var(--text-color);
         outline: none;
         font-size: 32px;
         font-weight: 600;
         width: 80%;
+        
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.3);
+          opacity: 0.5;
+        }
       }
 
       .swap-token-btn {
         display: flex;
         align-items: center;
         border-radius: 100px;
-        border: 1px solid #2E2F32;
-        background: #151517;
-        padding: 8px 12px;
+        border: 1px solid var(--el-border-color-light);
+        background: var(--el-menu-bg-color);
+        padding: 10px 16px;
         cursor: pointer;
-        // width: 81px;
         justify-content: center;
+        gap: 6px;
+        font-weight: 500;
+        
+        &:hover {
+          opacity: 0.8;
+        }
 
         img {
-          width: 16px;
-          margin: 0 2px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
         }
 
         span {
-          color: #fff;
-          font-size: 12px;
-          margin: 0 2px;
+          color: var(--text-color);
+          font-size: 14px;
+          font-weight: 500;
         }
       }
 
       .swap-token-btn.select {
-        background: #15e784;
-        color: #fff;
+        background: var(--el-menu-active-color);
+        color: var(--el-menu-bg-color);
+        border-color: var(--el-menu-active-color);
+        
+        span {
+          color: var(--el-menu-bg-color);
+        }
       }
     }
 
     .swap-balance {
-      font-size: 14px;
-      color: #fff;
-      margin-top: 5px;
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 8px;
       text-align: left;
       display: flex;
       align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      
+      span {
+        font-weight: 600;
+        color: var(--text-color);
+      }
     }
   }
 
@@ -713,40 +796,52 @@ input[type="number"] {
     // transform: translateY(-50%);
 
     .swap-switch-btn {
-      border: 1px solid #2E2F32;
-      background: #1E1E1E;
+      border: 2px solid var(--el-menu-active-color);
+      background: var(--el-menu-bg-color);
       border-radius: 50%;
-
       width: 48px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      position: relative;
+      z-index: 10;
+      
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 
   .swap-setting-row {
     display: flex;
     height: 48px;
-    padding: 0 16px;
+    padding: 0 20px;
     justify-content: space-between;
     border-radius: 100px;
-    border: 1px solid #2E2F32;
+    border: 1px solid var(--el-border-color-light);
     align-items: center;
     margin-bottom: 16px;
+    background: var(--el-bg-color);
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.8;
+    }
 
     .setting-label {
-      color: #fff;
+      color: var(--text-color);
       font-size: 15px;
       font-weight: 500;
       display: flex;
       align-items: center;
+      gap: 8px;
     }
 
     .slip-btn {
       background: none;
-      color: #fff;
+      color: var(--text-color);
       border: none;
       font-size: 14px;
       font-weight: 600;
@@ -756,23 +851,27 @@ input[type="number"] {
 
   .swap-main-btn {
     width: 100%;
-    height: 48px;
+    height: 52px;
     border: none;
     border-radius: 100px;
-    background: #2E2F32;
-    color: #8E8E92;
+    background: var(--el-border-color-light);
+    color: var(--text-color);
     font-size: 16px;
     font-weight: 700;
     cursor: not-allowed;
-    opacity: 0.75;
-    margin-top: 4px;
+    opacity: 0.6;
+    margin-top: 8px;
     outline: none;
 
     &:not([disabled]) {
-      background: #00CE7A;
-      color: #1A1E1D;
+      background: var(--el-menu-active-color);
+      color: var(--el-menu-bg-color);
       cursor: pointer;
       opacity: 1;
+      
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
 }

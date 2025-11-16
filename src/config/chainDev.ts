@@ -1,6 +1,6 @@
 export default {
   rpcUrl: "https://cp-geth-rpc1-testnet.cpchain.com",
-  chainName: "CPChain Testnet",
+  chainName: "Dolphinet Testnet",
   chainId: 86606,
   blockExplorersUrl: "https://explorer-testnet.cpchain.com/",
   testnet: true,

@@ -102,7 +102,7 @@
           <span style="font-size: 20px;
 font-style: normal;
 font-weight: 500;
-line-height: normal;color: #fff;">{{ status }}</span>
+line-height: normal;color: var(--text-color);">{{ status }}</span>
           <el-icon @click="showExit = false">
             <CloseBold />
           </el-icon>
@@ -494,7 +494,7 @@ const newTop = ref();
 // 计算 header 的样式
 const headerStyle = ref({
   top: "0px", // Initial top position
-  backgroundColor: "rgba(18, 18, 18, 0)", // 初始透明背景色
+  backgroundColor: "rgba(255, 255, 255, 0)", // 初始透明背景色
   transition: "background-color 0.3s ease", // 只保留背景色过渡效果
 });
 
@@ -506,11 +506,11 @@ const handleScroll = () => {
 // 监听滚动位置变化，修改 header 样式
 watchEffect(() => {
   // 背景色透明度：超过 150px 时背景色变深至不透明
-  const opacity = scrollY.value > 70 ? 0.6 : scrollY.value / 70;
+  const opacity = scrollY.value > 70 ? 0.8 : scrollY.value / 70;
   const newTop = 0; // top 最大值为 30px
   // console.log(opacity)
   headerStyle.value = {
-    backgroundColor: `rgba(18, 18, 18, ${opacity})`,
+    backgroundColor: `rgba(255, 255, 255, ${opacity})`,
 
     transition: "top 0.3s ease,background-color 0.3s ease",
     top: `${newTop}px`, // 动态设置 top
@@ -592,6 +592,12 @@ const handleSelect = (index, indexPath) => {
 :deep(.el-menu-item),
 :deep(.el-sub-menu__title) {
   font-size: 16px;
+  color: #0066cc !important;
+}
+
+/* 语言选择图标样式 */
+:deep(.el-sub-menu__title img) {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(195deg) brightness(100%) contrast(100%) !important;
 }
 
 :deep(.el-menu:not(.el-menu--collapse)) {
@@ -638,7 +644,7 @@ const handleSelect = (index, indexPath) => {
     // height: 400px;
     max-width: 500px;
     border-radius: 16px;
-    background: var(---, #151517);
+    background: var(--el-menu-bg-color);
     padding: 24px;
     position: absolute;
     max-width: 360px;
@@ -668,10 +674,11 @@ const handleSelect = (index, indexPath) => {
       img {
         max-width: 72px;
         margin-bottom: 16px;
+        filter: brightness(0);
       }
 
       h4 {
-        color: #FFF;
+        color: var(--text-color);
 
         font-size: 20px;
         font-style: normal;
@@ -723,7 +730,7 @@ const handleSelect = (index, indexPath) => {
         justify-content: space-between;
         align-items: center;
         border-radius: 16px;
-        background: var(---, #1e1e1e);
+        background: var(--el-bg-color);
         margin-bottom: 10px;
 
         img {
@@ -739,6 +746,7 @@ const handleSelect = (index, indexPath) => {
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          color: var(--text-color);
           // margin-left: 30px;
         }
       }
@@ -760,7 +768,7 @@ const handleSelect = (index, indexPath) => {
     gap: 24px;
     position: relative;
     border-radius: 16px;
-    background: var(---, #151517);
+    background: var(--el-menu-bg-color);
     cursor: pointer;
     position: absolute;
     animation: fadeIn 0.4s ease forwards;
@@ -802,6 +810,7 @@ const handleSelect = (index, indexPath) => {
         display: flex;
         align-items: center;
         justify-content: center;
+        color: var(--text-color);
       }
 
       .exit {
@@ -816,18 +825,18 @@ const handleSelect = (index, indexPath) => {
           gap: 4px;
           flex: 1 0 0;
           border-radius: 100px;
-          background: var(---, #252629);
+          background: var(--el-bg-color);
           border: none;
           outline: none;
           font-size: 14px;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
-          color: #fff;
+          color: var(--text-color);
         }
 
         .blances {
-          color: #8e8e92;
+          color: var(--text-color);
 
           font-size: 14px;
           font-style: normal;
@@ -878,7 +887,7 @@ const handleSelect = (index, indexPath) => {
       gap: 24px;
       position: relative;
       border-radius: 16px;
-      background: var(---, #151517);
+      background: var(--el-menu-bg-color);
       cursor: pointer;
       animation: slide-up 0.3s ease;
       position: absolute;
@@ -935,14 +944,14 @@ const handleSelect = (index, indexPath) => {
             gap: 4px;
             flex: 1 0 0;
             border-radius: 100px;
-            background: var(---, #252629);
+            background: var(--el-bg-color);
             border: none;
             outline: none;
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-            color: #fff;
+            color: var(--text-color);
           }
 
           .blances {
@@ -965,7 +974,7 @@ const handleSelect = (index, indexPath) => {
 }
 
 a {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
 
   &:hover {
@@ -998,8 +1007,8 @@ a {
     // right: 0;
     // border-radius: 100px;
     backdrop-filter: blur(14px);
-    padding: 0 24px;
-    width: calc(100% - 48px);
+    padding: 0 8px;
+    width: calc(100% - 16px);
     // border-radius: 100px;
 
     .gridContent {
@@ -1007,9 +1016,13 @@ a {
       display: flex;
       align-items: center;
       width: 100%;
+      padding-left: 16px;
 
       img {
-        height: 30px;
+        height: 100px;
+        margin-left: 8px;
+        margin-top: 6px;
+        filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(195deg) brightness(100%) contrast(100%);
       }
     }
 
@@ -1034,8 +1047,8 @@ a {
         align-items: center;
         gap: 10px;
         border-radius: 100px;
-        border: 1px solid #fff;
-        color: #fff;
+        border: 1px solid #0066cc;
+        color: #0066cc;
         width: 130px;
 
         font-size: 14px;
@@ -1050,9 +1063,10 @@ a {
       button:hover {
         cursor: pointer;
 
-        border: 1px solid #00ce7a;
+        border: 1px solid #0066cc;
 
-        color: #00ce7a;
+        color: #0066cc;
+        background: rgba(0, 102, 204, 0.1);
       }
 
       .menu {
@@ -1079,7 +1093,7 @@ a {
       // width: calc(100% - 100px);
       // border-radius: 100px;
       // backdrop-filter: blur(14px);
-      padding: 0 24px;
+      padding: 0 8px;
       // border-radius: 100px;
     }
   }
@@ -1103,7 +1117,8 @@ a {
 
     .content {
       height: 48px;
-      width: calc(100% - 30px);
+      width: calc(100% - 16px);
+      padding: 0 8px;
 
       backdrop-filter: blur(14px);
       // border-radius: 100px;
@@ -1113,9 +1128,13 @@ a {
         display: flex;
         align-items: center;
         width: 100%;
+        padding-left: 12px;
 
         img {
-          height: 20px;
+          height: 62px;
+          margin-left: 6px;
+          margin-top: 5px;
+          filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(195deg) brightness(100%) contrast(100%);
         }
       }
 
@@ -1140,8 +1159,8 @@ a {
           align-items: center;
           gap: 10px;
           border-radius: 100px;
-          border: 1px solid #fff;
-          color: #fff;
+          border: 1px solid #0066cc;
+          color: #0066cc;
 
           font-size: 16px;
           font-weight: 500;
@@ -1172,8 +1191,8 @@ a {
             width: 100px;
             padding: 0 5px;
             border-radius: 100px;
-            border: 1px solid #fff;
-            color: #fff;
+            border: 1px solid #0066cc;
+            color: #0066cc;
             font-family: "PingFang SC";
             font-size: 12px;
             font-weight: 500;
@@ -1183,9 +1202,10 @@ a {
           button:hover {
             cursor: pointer;
 
-            border: 1px solid #00ce7a;
+            border: 1px solid #0066cc;
 
-            color: #00ce7a;
+            color: #0066cc;
+            background: rgba(0, 102, 204, 0.1);
           }
 
           :deep(.el-icon:hover) {

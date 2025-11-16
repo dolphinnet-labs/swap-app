@@ -4,9 +4,9 @@ import { defineChain } from 'viem'
 
 const cpChain = defineChain({
   id: 86608,
-  name: 'CPChain',
+  name: 'Dolphinet',
   nativeCurrency: {
-    name: 'CPChain',
+    name: 'Dolphinet',
     symbol: 'CP', // ✅ 关键：正确的 symbol
     decimals: 18,
   },
@@ -17,7 +17,7 @@ const cpChain = defineChain({
   },
   blockExplorers: {
     default: {
-      name: 'CP Explorer',
+      name: 'Dolphinet Explorer',
       url: 'https://explorer.cpchain.com',
     },
   },

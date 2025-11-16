@@ -127,8 +127,8 @@ function getIcon(icon) {
         transform: translateX(-50%);
         top: 20%;
         width: 350px;
-        background: #18191a;
-        color: #fff;
+        background: var(--el-menu-bg-color);
+        color: var(--text-color);
         border-radius: 18px;
         padding: 24px;
         height: 400px;
@@ -218,21 +218,21 @@ function getIcon(icon) {
         // padding: 10px;
         padding: 0 20px;
         border-radius: 100px;
-        background: #252629;
+        background: var(--el-bg-color);
         border: none;
-        color: #fff;
+        color: var(--text-color);
         font-size: 16px;
     }
 
     .search-box input::placeholder {
-        color: #666868;
+        color: var(--text-color);
     }
 
     .token-list-title {
       
         // padding: 0 20px 5px 20px;
         // height: 35px;
-        color:  #8E8E92;
+        color: var(--text-color);
         text-align: left;
         display: flex;
         //  padding-left: 30px;
@@ -253,7 +253,7 @@ function getIcon(icon) {
         transition: background .2s;
 
         &:hover {
-            background: #212226;
+            background: var(--el-bg-color);
         }
 
         .token-icon {
@@ -274,7 +274,7 @@ function getIcon(icon) {
         }
 
         .token-address {
-            color: var(---, #666868);
+            color: var(--text-color);
 
 
             font-size: 12px;
