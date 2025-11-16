@@ -126,7 +126,7 @@ async function computedGas(abi, functionName, args, to, account, value = undefin
 }
 
 /**
- * Unified doSwaps supporting CP native coin or ERC20 CP token on cp chain.
+ * Unified doSwaps supporting CP native coin or ERC20 CP token on AeroSwap.
  * Uses @wagmi/vue hooks for contract interactions
  * 使用精确授权金额来减少钱包警告提示
  */
@@ -139,8 +139,8 @@ export async function doSwaps({
   userAddress,
   routerAddress,
   decimals,
-  wcpAddress,       // 👈 CP 链上的 Wrapped CP 地址
-  nativeSymbol = 'CP', // 👈 原生币符号
+  wcpAddress,       // 👈 Dolphinet 链上的 Wrapped DOL 地址
+  nativeSymbol = 'DOL', // 👈 原生币符号
 
   setTxHash,          // 👈 设置交易哈希的回调
   setApprovalHash,    // 👈 设置授权哈希的回调

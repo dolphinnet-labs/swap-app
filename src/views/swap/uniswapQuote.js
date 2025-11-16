@@ -10,19 +10,19 @@ const FACTORY_ADDRESS = '0x2FC7B621aB51108e3108dD0EbCE76cb05545743a'
 const INIT_CODE_HASH = '0x5a2dc30108940dd053e5fe06fe4deb55d420828f787d508920ac29e08aed3ad9'
 
 
-// ✅ Token 列表（支持 CP 原生币和 ERC20）
+// ✅ Token 列表（支持 DOL 原生币和 ERC20）
 const TOKEN_LIST = {
-  "CP": {
-    symbol: 'CP',
+  "DOL": {
+    symbol: 'DOL',
     decimals: 18,
     address: '',
     isNative: true,
-    chainId: 86608
+    chainId: 1520
   },
-  "JF": new Token(86608, '0xeC8352D242Cb1236c7d2eE0F234EeBb907BDd2bA', 18, 'JF', 'Jellyfish'),
-  "WCP": new Token(86608, '0xCF4825F0dCaEAa158310473C1FFF1980Acb5b9F7', 18, 'WCP', 'Wrapped CP'),
-  "DOLUSDT": new Token(86608, '0xC10F6186Bb3C9E68516D0e2F829f1b95C323d542', 18, 'DOLUSDT', 'Dolphinet DOLUSDT'),
-  "DOLUSDC": new Token(86608, '0xc916dc0d98Bb425dFb300b9f90c7097581862642', 18, 'DOLUSDC', 'Dolphinet DOLUSDC')
+  "JF": new Token(1520, '0xeC8352D242Cb1236c7d2eE0F234EeBb907BDd2bA', 18, 'JF', 'Jellyfish'),
+  "WCP": new Token(1520, '0xCF4825F0dCaEAa158310473C1FFF1980Acb5b9F7', 18, 'WCP', 'Wrapped CP'),
+  "DOLUSDT": new Token(1520, '0xC10F6186Bb3C9E68516D0e2F829f1b95C323d542', 18, 'DOLUSDT', 'Dolphinet DOLUSDT'),
+  "DOLUSDC": new Token(1520, '0xc916dc0d98Bb425dFb300b9f90c7097581862642', 18, 'DOLUSDC', 'Dolphinet DOLUSDC')
 }
 
 // ✅ 获取 SDK Token 实例
