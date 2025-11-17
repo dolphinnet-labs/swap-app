@@ -961,6 +961,7 @@ input[type="number"] {
 }
 
 
+/* 移动端通用样式 - 统一比例系统 */
 @media (max-width: 768px) {
   #container {
     width: 100%;
@@ -969,14 +970,15 @@ input[type="number"] {
     padding-bottom: 20px;
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 24px;
+      font-size: 32px; /* 统一标题大小 */
+      margin-bottom: 28px;
       height: auto;
-      min-height: 34px;
+      min-height: 38px;
+      letter-spacing: -0.5px;
     }
 
     .contents {
-      padding-top: 60px;
+      padding-top: 70px; /* 增加顶部间距 */
     }
   }
 
@@ -988,33 +990,266 @@ input[type="number"] {
   .swap-card {
     max-width: 100%;
     width: 100%;
-    padding: 20px 16px;
+    padding: 24px 18px; /* 统一内边距 */
     border-radius: 20px;
     margin: 0 auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
     .swap-row {
-      padding: 16px;
+      padding: 18px; /* 统一行内边距 */
       border-radius: 16px;
-      margin-bottom: 12px;
+      margin-bottom: 16px; /* 增加行间距 */
+      background: var(--el-bg-color);
+      border: 1px solid var(--el-border-color-light);
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: rgba(0, 206, 122, 0.3);
+      }
 
       .swap-label {
+        font-size: 14px; /* 统一标签大小 */
+        margin-bottom: 10px;
+        font-weight: 500;
+        color: var(--text-color);
+        opacity: 0.8;
+      }
+
+      .swap-amount-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .swap-amount-input {
+          font-size: 28px; /* 统一输入框字体 */
+          font-weight: 600;
+          width: 100%;
+          flex: 1;
+          background: transparent;
+          border: none;
+          outline: none;
+          color: var(--text-color);
+          line-height: 1.2;
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+            opacity: 0.6;
+          }
+        }
+
+        .swap-token-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 16px;
+          min-height: 48px; /* 统一按钮高度 */
+          background: var(--el-menu-bg-color);
+          border: 1px solid var(--el-border-color-light);
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
+
+          &:hover {
+            background: rgba(0, 206, 122, 0.05);
+            border-color: rgba(0, 206, 122, 0.3);
+          }
+
+          &:active {
+            transform: scale(0.98);
+          }
+
+          img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+          }
+
+          span {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-color);
+          }
+        }
+      }
+
+      .swap-balance {
         font-size: 13px;
+        margin-top: 8px;
+        color: rgba(0, 0, 0, 0.6);
+        font-weight: 500;
+        text-align: left;
+      }
+    }
+
+    .swap-switch-row {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      width: calc(100% - 36px);
+      top: 120px; /* 调整位置 */
+      z-index: 10;
+
+      .swap-switch-btn {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        background: var(--el-menu-bg-color);
+        border: 2px solid var(--el-menu-active-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(0, 206, 122, 0.2);
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+          color: var(--el-menu-active-color);
+        }
+      }
+    }
+
+    .swap-setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px; /* 统一设置行高度 */
+      padding: 0 18px;
+      margin-bottom: 16px;
+      background: var(--el-bg-color);
+      border: 1px solid var(--el-border-color-light);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: rgba(0, 206, 122, 0.3);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+
+      .setting-label {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .slip-btn {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--el-menu-active-color);
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    .swap-main-btn {
+      width: 100%;
+      height: 56px; /* 统一主按钮高度 */
+      border: none;
+      border-radius: 16px;
+      background: var(--el-border-color-light);
+      color: var(--text-color);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: not-allowed;
+      opacity: 0.6;
+      margin-top: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+      &:not([disabled]) {
+        background: linear-gradient(135deg, #00CE7A 0%, #00B865 100%);
+        color: white;
+        cursor: pointer;
+        opacity: 1;
+        box-shadow: 0 6px 20px rgba(0, 206, 122, 0.3);
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 8px 25px rgba(0, 206, 122, 0.4);
+        }
+
+        &:active {
+          transform: translateY(0) scale(0.98);
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+/* 小屏幕设备优化 - 保持比例协调 */
+@media (max-width: 480px) {
+  #container {
+    padding: 0 14px;
+
+    h1 {
+      font-size: 28px; /* 小幅缩小但保持可读性 */
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+    }
+
+    .contents {
+      padding-top: 60px; /* 适当减少顶部间距 */
+    }
+  }
+
+  .swap-card {
+    padding: 20px 16px; /* 稍微减少内边距 */
+
+    .swap-row {
+      padding: 16px; /* 稍微减少行内边距 */
+      margin-bottom: 14px; /* 减少行间距 */
+
+      .swap-label {
+        font-size: 13px; /* 稍微缩小标签 */
         margin-bottom: 8px;
       }
 
       .swap-amount-row {
+        gap: 10px; /* 减少元素间距 */
+
         .swap-amount-input {
-          font-size: 28px;
-          width: 70%;
+          font-size: 24px; /* 适当缩小输入框字体 */
         }
 
         .swap-token-btn {
-          padding: 12px 14px;
-          min-height: 44px; // 确保触摸目标足够大
-          
+          padding: 10px 14px;
+          min-height: 44px; /* 保持触摸目标 */
+
           img {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
           }
 
           span {
@@ -1031,7 +1266,7 @@ input[type="number"] {
 
     .swap-switch-row {
       width: calc(100% - 32px);
-      top: 110px;
+      top: 110px; /* 调整切换按钮位置 */
 
       .swap-switch-btn {
         width: 44px;
@@ -1042,141 +1277,121 @@ input[type="number"] {
     }
 
     .swap-setting-row {
-      height: 44px;
+      height: 50px; /* 稍微减少设置行高度 */
       padding: 0 16px;
-      margin-bottom: 12px;
-      min-height: 44px; // 确保触摸目标足够大
+      margin-bottom: 14px;
 
       .setting-label {
         font-size: 14px;
       }
 
       .slip-btn {
-        font-size: 13px;
-        min-height: 44px;
-        padding: 8px 0;
+        font-size: 14px;
       }
     }
 
     .swap-main-btn {
-      height: 48px;
+      height: 50px; /* 稍微减少主按钮高度 */
       font-size: 16px;
-      min-height: 48px; // 确保触摸目标足够大
-      margin-top: 12px;
+      margin-top: 14px;
     }
   }
 }
 
-@media (max-width: 480px) {
-  #container {
-    padding: 0 12px;
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .contents {
-      padding-top: 50px;
-    }
-  }
-
-  .swap-card {
-    padding: 16px 12px;
-
-    .swap-row {
-      padding: 14px;
-
-      .swap-amount-row {
-        .swap-amount-input {
-          font-size: 24px;
-        }
-
-        .swap-token-btn {
-          padding: 10px 12px;
-        }
-      }
-    }
-
-    .swap-switch-row {
-      top: 105px;
-    }
-  }
-}
-
-/* iPhone SE (375x667) 和类似小屏设备 */
+/* iPhone SE (375x667) 和类似小屏设备 - 精确适配 */
 @media only screen
   and (device-width: 375px)
   and (device-height: 667px)
   and (-webkit-device-pixel-ratio: 2) {
   #container {
     h1 {
-      font-size: 22px;
-      margin-bottom: 16px;
+      font-size: 26px; /* SE设备稍微调小但保持协调 */
+      margin-bottom: 20px;
+      letter-spacing: -0.2px;
     }
 
     .contents {
-      padding-top: 40px;
+      padding-top: 50px; /* 适配SE的屏幕比例 */
     }
   }
 
   .swap-card {
-    padding: 14px 10px;
+    padding: 18px 14px; /* 为SE优化内边距 */
 
     .swap-row {
-      padding: 12px;
-      margin-bottom: 10px;
+      padding: 14px; /* SE设备减少内边距 */
+      margin-bottom: 12px; /* 减少行间距 */
+
+      .swap-label {
+        font-size: 13px;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
 
       .swap-amount-row {
+        gap: 8px; /* SE设备减少间距 */
+
         .swap-amount-input {
-          font-size: 22px;
-          width: 65%;
+          font-size: 22px; /* SE设备输入框字体稍小 */
+          font-weight: 600;
         }
 
         .swap-token-btn {
-          padding: 8px 10px;
-          font-size: 13px;
+          padding: 10px 12px;
+          min-height: 40px; /* SE设备按钮稍小但保持可用性 */
+          border-radius: 10px;
 
           img {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
           }
 
           span {
             font-size: 13px;
+            font-weight: 500;
           }
         }
       }
 
       .swap-balance {
-        font-size: 11px;
+        font-size: 12px;
         margin-top: 6px;
       }
     }
 
     .swap-switch-row {
-      top: 95px;
+      top: 100px; /* 适配SE的布局 */
 
       .swap-switch-btn {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
       }
     }
 
     .swap-setting-row {
-      height: 40px;
+      height: 48px; /* SE设备设置行稍小 */
       padding: 0 14px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      border-radius: 14px;
 
       .setting-label {
-        font-size: 13px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .slip-btn {
+        font-size: 14px;
+        font-weight: 600;
       }
     }
 
     .swap-main-btn {
-      height: 44px;
-      font-size: 15px;
-      margin-top: 10px;
+      height: 48px; /* SE设备主按钮适中大小 */
+      font-size: 16px;
+      margin-top: 12px;
+      border-radius: 14px;
     }
   }
 }
