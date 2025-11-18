@@ -82,7 +82,7 @@
           </el-icon>
           <!-- <h3>{{ $t("link.titel") }}</h3> -->
           <div class="headerlogo">
-            <img src="./icons/logo.svg" alt="">
+            <img src="./icons/noword.png" alt="">
             <h4>{{ $t("link.titel") }}</h4>
           </div>
           <ul class="scroll-area">
@@ -1050,7 +1050,7 @@ a {
       padding-left: 16px;
 
       img {
-        height: 100px;
+        height: 70px;
         margin-left: 8px;
         margin-top: 6px;
         filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(195deg) brightness(100%) contrast(100%);
@@ -1170,7 +1170,7 @@ a {
         padding-left: 12px;
 
         img {
-          height: 56px;
+          height: 40px;
           margin-left: 4px;
           margin-top: 4px;
           filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(1352%) hue-rotate(195deg) brightness(100%) contrast(100%);
@@ -1280,7 +1280,7 @@ a {
         padding-left: 8px;
         
         img {
-          height: 50px;
+          height: 36px;
           margin-left: 2px;
         }
       }
